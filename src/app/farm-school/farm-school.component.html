@@ -1,0 +1,154 @@
+<div class="farm__container">
+    <div class="container">
+        <nz-breadcrumb class="breadcrumb">
+            <nz-breadcrumb-item>
+              <a [routerLink]="['../../']">Асосий саҳифа</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>Фермерлар Мактаби</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <div class="image">
+           
+            <div class="text">
+                <img src="../../assets/image123.svg" alt="">
+                <h1>Fermerlar <br> Maktabi</h1>
+            </div>
+            <p>Замонавий билим ва кўникмаларга эга бўлинг</p> 
+        </div>
+    </div>
+
+    <div class="about__us">
+        <div class="container">
+            <h1>Биз ҳақимизда</h1>
+            <div nz-row class="card">
+                <div nz-col nzSpan="12" [nzXl]="12" [nzXs]="24"><img
+                    nz-image
+                    width="326,29px"
+                    height="301,5px"
+                    nzSrc="../../assets/frm-guy.png"
+                    alt=""
+                  /></div>
+                <div nz-col nzSpan="12" [nzXl]="12" [nzXs]="24" class="text">Фермерлар мактаби - бу қишлоқ хўжалиги маҳсулотларини ишлаб чиқаришда энг замонавий инновацион технологиялардан фойдаланишни ёшларга ўргатиш, билимли ва малакали ёш фермерларни тайёрлаш ва қишлоқ хўжалиги соҳасида тадбиркорлик кўникмаларини ошириш сирларини очиб берадиган Ўзбекистондаги илк лойиҳа.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="our__goal">
+        <div class="container">
+            <h1>Бизнинг мақсадимиз</h1>
+            <div class="text">
+                Сўнги йилларда агросаноат мажмуасида деҳқон хўжаликларининг роли ўсиб бормоқда. Юқори ҳосил олиш ва бор ресурслардан оқилона фойдаланиш бугунги кун талаби. Қишлоқ хўжалиги соҳасида ўз бизнесини очиш ёки юритиш учун «Агробанк» АТБ кредитларини олаётган ёшларнинг соҳа бўйича билим ва малакага бўлган эҳтиёжини инобатга олган ҳолда, Олий таълим муассасалари билан ҳамкорликда ёшларни қисқа муддатли курсларда ўқитиш мақсадида “Фермерлар мактаби” ўз иш фаолиятини бошламоқда.
+                Фермерлар мактаби пилот лойиҳа сифатида 5 та ҳудудда қишлоқ хўжалиги олий ўқув юртлари базасида ташкил этилади: (ва кейинчалик ҳудудлар миқёси кенгайтирилади)
+            </div>
+        </div>
+    </div>
+    <div class="education">
+        <div class="container">
+            <h1>Таълим йўналишлари</h1>
+            <div class="row">
+                <div class="card">
+                  <img src="../../assets/card/chicken.png" alt="">
+                  Паррандачилик
+                </div>
+                <div class="card">
+                  <img src="../../assets/card/cow.png" alt="">
+                  Чорвачилик
+                </div>
+                <div class="card">
+                  <img src="../../assets/card/vegetable.png" alt="">
+                  Сабзавот ва полизчилик
+                </div>
+                <div class="card">
+                  <img src="../../assets/card/Mask Group (3).png" alt="">
+                  Иссиқхона хўжалиги
+                </div>
+                  <div class="card">
+                    <img src="../../assets/card/grape.png" alt="">
+                    Узумчилик
+                </div>
+                <div class="card">
+                  <img src="../../assets/card/coin.png" alt="">
+                  Бизнес, молия ва <br> ҳуқуқий саводхонлик 
+                </div>
+                <div class="card">
+                  <img src="../../assets/card/coin.png" alt="">
+                  Бизнес, молия ва <br> ҳуқуқий саводхонлик 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="registration">
+        <div class="container">
+            <div class="form">
+                <h1>Рўйхатдан ўтиш</h1>
+                <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                    <span>Исм</span>
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="Please input your name!">
+                          <input nz-input id="nickname" formControlName="nickname" />
+                        </nz-form-control>
+                      </nz-form-item>
+
+                    <span>Фамилия</span>
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="Please input your familyname!">
+                          <input nz-input id="nickname" formControlName="nickname" />
+                        </nz-form-control>
+                      </nz-form-item>
+
+                    <span>Телефон рақами</span>
+                    <nz-form-item>
+                      <nz-form-control
+                        [nzValidateStatus]="validateForm.controls['phoneNumber']"
+                        nzErrorTip="Please input your phone number!"
+                      >
+                        <nz-input-group>
+                          <ng-template #addOnBeforeTemplate>
+                            <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+                            </nz-select>
+                          </ng-template>
+                          <input formControlName="phoneNumber" id="'phoneNumber'" nz-input />
+                        </nz-input-group>
+                      </nz-form-control>
+                    </nz-form-item>
+                    <!-- Email -->
+
+                    <span>E-mail</span>
+                    <nz-form-item>
+                      <nz-form-control nzErrorTip="The input is not valid E-mail!">
+                        <input nz-input formControlName="email" id="email" />
+                      </nz-form-control>
+                    </nz-form-item>
+    
+                    <span>Дата рождения *</span>
+                    <nz-form-item>
+                        <nz-form-control  nzErrorTip="The input is not valid E-mail!">
+                            <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+                        </nz-form-control>        
+                    </nz-form-item>
+
+                    <nz-form-item nz-row class="register-area">
+                      <nz-form-control>
+                        <label nz-checkbox formControlName="agree">
+                          <span>
+                            Шахсий маълумотлардан фойдаланиш
+                            <a>шартларини қабул қиламан.</a>
+                          </span>
+                        </label>
+                      </nz-form-control>
+                    </nz-form-item>
+
+                    <nz-form-item nz-row class="register-area">
+                        <nz-form-control>
+                          <button nz-button nzType="primary">Register</button>
+                        </nz-form-control>
+                    </nz-form-item>
+            
+                </form>
+            </div>
+                
+            
+        </div>
+        
+    </div>
+    
+</div>

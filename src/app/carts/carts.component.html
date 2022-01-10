@@ -1,0 +1,185 @@
+<div class="container cart__container">
+    <nz-breadcrumb class="breadcrumb">
+        <nz-breadcrumb-item>
+          <a [routerLink]="['../../']">Асосий саҳифа</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>Саватча</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Буюртмалар</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <h1>Саватча</h1>
+    <div nz-row>
+        <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="24" nzXl="24">
+
+            <nz-table #editTable [nzData]="info">
+                <thead>
+                    <tr>
+                      <th nzWidth="40%">Товар</th>
+                      <th nzWidth="15%">Нархи (сум)	</th>
+                      <th nzWidth="15%">Ў.б.</th>
+                      <th nzWidth="15%">Миқдори</th>
+                      <th nzWidth="15%">Суммаси</th>
+                    </tr>
+                </thead>
+                <tbody [hidden]="myHide">
+                    <tr *ngFor="let data of editTable.data; let i = index">
+                      <td>
+                        <div class="column">
+                            <img src={{data.img}} alt="">
+                            <div>
+                                <h3>{{data.name}}</h3>
+                                <p><span>Сотувчи:</span> {{data.saller}}</p>
+                                <p *ngIf="data.place"><span>Олиб кетиш:</span>{{data.place}}</p>
+                            </div>
+                        </div>
+                      </td>
+                      <td><span>{{data.cost}}</span></td>
+                      <td><span>{{data.killo}}</span></td>
+                      <td>
+                        <div class="buttons">
+                            <button class="prev" (click) = "Calc(i, 'prev')"  nz-button nzType="default" nzShape="circle">-</button>
+                            <span>{{data.count}}</span>
+                            <button class="next" (click) = "Calc(i, 'next')" nz-button nzType="default" nzShape="circle">+</button>
+                        </div>
+                      </td>
+                      <td>{{data.summasi}} сум <button class="delete" (click)=delete(data.id)><img src="../../assets/Vector.svg" alt=""></button></td>
+                    </tr>
+                </tbody>
+                 <!-- <app-cart-items></app-cart-items>  -->
+            </nz-table>
+            <div class="bottom__part" [hidden]="myHide">
+                <div class="summa"><span>Жами: </span><p style="margin-left: 5px;"> {{sum | number:"1.2-2"}} сум</p></div>
+                <button (click)="Orders()">Буюртма бериш</button>
+            </div>
+            <app-cart-img [hidden]="!myHide"></app-cart-img>
+        </div>
+
+
+            <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="0" nzXl="0">
+                <div class="mobile__cart" *ngFor="let data of info let i = index">
+                    <div class="inner">
+                        <img src={{data.img}} alt="">
+                        <div class="text">
+                            <h2>{{data.name}}</h2>
+                            <p>{{data.cost}} {{data.killo}}</p>
+                            <div class="buttons">
+                                <button class="prev" nz-button nzType="default" nzShape="circle" (click) = "Calc(i, 'prev')">-</button>
+                                <span>{{data.count}}</span>
+                                <button class="next" nz-button nzType="default" nzShape="circle" (click) = "Calc(i, 'next')">+</button>
+                            </div>
+                        </div>
+                        <div class="sum">
+                            <p>{{data.summasi}}</p>
+                            <button (click)="delete(data.id)" class="delete"><img src="../../assets/Vector.svg" alt=""></button>
+                        </div >
+                    </div>
+                    <div class="inner__close">
+                        <button (click)="delete(data.id)"><img src="../../assets/Vector.svg" alt=""></button>
+                        <p>{{data.summasi}}</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="summa"><span>Жами:</span><p>{{sum | number:"1.2-2"}} сум</p></div>
+                    <button (click)="Orders()">Буюртма бериш</button>
+                </div>
+                
+            </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="cart_container container">
+    <nz-breadcrumb class="breadcrumb">
+        <nz-breadcrumb-item>
+          <a [routerLink]="['../../']">Асосий саҳифа</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>Саватча</nz-breadcrumb-item>
+      </nz-breadcrumb>
+
+      <h1>Саватча</h1>
+
+          <div nz-row>
+            <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="24" nzXl="24">
+
+                <nz-table>
+                    <thead>
+                        <tr>
+                          <th nzWidth="40%">Товар</th>
+                          <th nzWidth="15%">Нархи (сум)	</th>
+                          <th nzWidth="15%">Ў.б.</th>
+                          <th nzWidth="15%">Миқдори</th>
+                          <th nzWidth="15%">Суммаси</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                          <td>
+                            <div class="column">
+                                <img src="../../assets/img.png" alt="">
+                                <div>
+                                    <h3>Бинафша Шоҳ Нўхати</h3>
+                                    <p><span>Сотувчи:</span> Ташкент АгроФерма</p>
+                                    <p><span>Олиб кетиш:</span>15, Бектемирский район, массив Олима Оширова, Ташкент, Узбекистан</p>
+                                </div>
+                            </div>
+                          </td>
+                          <td>10 199 </td>
+                          <td>килограмм</td>
+                          <td>
+                            <div class="buttons">
+                                <button class="prev" nz-button nzType="default" nzShape="circle">-</button>
+                                <span>1</span>
+                                <button class="next" nz-button nzType="default" nzShape="circle">+</button>
+                            </div>
+                          </td>
+                          <td>10 199 сум</td>
+                        </tr>
+                    </tbody>
+                
+                </nz-table>
+            
+                <div class="bottom__part">
+                    <div class="summa"><span>Жами:</span><p>31 944 889 сум</p></div>
+                    <button>Буюртма бериш</button>
+                </div>
+            </div>
+            <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="0" nzXl="0">
+                <div class="mobile__cart">
+                    <div class="inner">
+                        <img src="../../assets/img.png" alt="">
+                        <div class="text">
+                            <h2>Бинафша Шоҳ Нўхати</h2>
+                            <p>10 199 килограмм</p>
+                            <div class="buttons">
+                                <button class="prev" nz-button nzType="default" nzShape="circle">-</button>
+                                <span>1</span>
+                                <button class="next" nz-button nzType="default" nzShape="circle">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inner__close">
+                        <button><img src="../../assets/close.svg" alt=""></button>
+                        <p>10 199 сум</p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+          </div>
+
+          
+       <nz-empty nzNotFoundImage="../../assets/eva_shopping-cart-outline.png" nzNotFoundContent="text">Сизда танланган махсулотлар ёқ</nz-empty> 
+      <div class="text">
+        <h2>Сизда танланган махсулотлар ёқ</h2>
+        <p>Ўзингизга керакли бўлган махсолтни сақланг ва уни ушбу <br> саҳифадан топишингиз мумкин</p>
+      </div> 
+
+
+
+
+</div> -->

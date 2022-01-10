@@ -1,0 +1,66 @@
+<div class="container cart__container">
+    <nz-breadcrumb class="breadcrumb">
+        <nz-breadcrumb-item>
+          <a [routerLink]="['../../']">Асосий саҳифа</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>Саватча</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Буюртмалар</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <h1>Буюртма №1</h1>
+    <div nz-row>
+        <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="24" nzXl="24">
+            <nz-table  #editTable [nzData]="info">
+                <thead>
+                    <tr>
+                      <th nzWidth="40%">Товар</th>
+                      <th nzWidth="20%">Нархи (сум)	</th>
+                      <th nzWidth="20%">Миқдори</th>
+                      <th nzWidth="20%">Суммаси</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of editTable.data; let i = index">
+                      <td>
+                        <div class="column">
+                            <img src={{data.img}} alt="">
+                            <div>
+                                <h3>{{data.name}}</h3>
+                                <p><span>Сотувчи:</span> {{data.saller}}</p>
+                                <p *ngIf="data.place"><span>Олиб кетиш:</span>{{data.place}}</p>
+                            </div>
+                        </div>
+                      </td>
+                      <td><span>{{data.cost}}</span></td>
+                      <td><span>{{data.killo}}</span></td>
+                      <td>{{data.summasi}} сум</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <div class="bottom__part">
+                <div class="summa"><span>Жами:</span><p style="margin-left: 5px;"> 31 944 889 сум</p></div>
+            </div>
+        </div>
+
+            <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="0" nzXl="0">
+                <div class="mobile__cart" *ngFor="let data of info">
+                    <div class="inner">
+                        <img src={{data.img}} alt="">
+                        <div class="text">
+                            <h2>{{data.name}}</h2>
+                            <p>{{data.cost}} {{data.killo}}</p>
+                        </div>
+                    </div>
+                    <div class="inner__close">
+                        <p>{{data.summasi}} сум</p>
+                    </div>
+                </div>
+
+                <div class="bottom__part">
+                    <div class="summa"><span>Жами:</span><p style="margin-left: 5px;">31 944 889 сум</p></div>
+                </div>
+                
+            </div>
+    </div>
+</div>
+
+

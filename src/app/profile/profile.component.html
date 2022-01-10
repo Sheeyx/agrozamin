@@ -1,0 +1,15 @@
+<div class="container">
+  <nz-breadcrumb class="breadCrumb">
+    <nz-breadcrumb-item class="breadcrumb__text">
+      <a [routerLink]="['/']">Асосий саҳифа</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item class="breadcrumb__text">Кабинет</nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <div class="profile-layout" style="background:#ffffff;" nz-row [nzGutter]="[46, 10]" >
+    <app-sidebar nz-col nzSm="24" nzLg="6"></app-sidebar>
+    <router-outlet></router-outlet>
+<!--    <app-profile-info nz-col nzSm="24" nzLg="18"></app-profile-info>-->
+    <app-my-request nz-col nzSm="24" nzLg="18"></app-my-request>
+<!--    <app-my-orders nz-col nzSm="24" nzLg="18"></app-my-orders>-->
+  </div>
+</div>
